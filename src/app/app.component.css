@@ -1,0 +1,9 @@
+#search-bar {
+  display: flex;
+  justify-content: end;
+}
+
+#title-kart {
+  display: flex;
+  justify-content: space-around;
+}
