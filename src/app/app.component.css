@@ -1,9 +1,38 @@
 #search-bar {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
+  border: 1px solid red;
+  width: 80%;
+  height: 15%;
+  padding: 0 10px; 
+  margin: 0 auto;
+  align-items: center;
 }
 
 #title-kart {
   display: flex;
   justify-content: space-around;
+  border: 1px solid blue;
+  width: 50%;
+}
+
+#input-logo {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  border: 1px solid black;
+}
+
+#user-query {
+  border: none;
+}
+
+#loupe {
+  width: 35px;
+  font-size: 1.6rem;
+  margin-left: 5px;
+}
+
+#brand {
+  font-size: 2rem;
 }
