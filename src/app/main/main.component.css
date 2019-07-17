@@ -1,0 +1,46 @@
+main {
+  border: 1px solid black;
+  width: 70%;
+  float: right;
+}
+
+#request-results-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+h1, .book-indentity {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.fas.fa-image {
+  font-size: 200px;
+}
+
+.book-stars i {
+  color: yellow;
+}
+
+.btns-block {
+  width: 200px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.mybtns {
+  background-image: url("../../assets/img/pexels-photo-129731.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 3px;
+  border: #FFF;
+}
+
+.book-details {
+  font-weight: bold;
+}
+
+.mybtns i{
+  font-size: 20px;
+}
