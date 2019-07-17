@@ -2,10 +2,10 @@
   display: flex;
   justify-content: space-between;
   border: 1px solid black;
-  width: 80%;
-  height: 15%;
+  width: 70%;
+  height: 20%;
   padding: 0 10px; 
-  margin: 0 auto;
+  margin: 30px auto 50px auto;
   align-items: center;
 }
 
