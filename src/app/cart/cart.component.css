@@ -1,0 +1,70 @@
+ 
+
+ h2{
+     text-align: center;
+     margin-top: 5%;
+ }
+
+ .fa-times-circle{
+     color: lightgrey;
+ }
+ 
+ .fa-times-circle:hover{
+     color: red;
+ }
+
+ table{
+    border-collapse:separate; 
+    border-spacing:0 15px;
+    width: 85%;
+    
+ }
+
+tr, td{             
+        width:150px; 
+        text-align: center;
+        
+        padding: 5px; 
+   }
+
+
+.delete{
+    text-align: end;
+}
+
+
+.titleAuthor{
+    text-align: start;
+}
+
+.price{
+    text-align: end;
+}
+
+
+.select{
+    text-align: end;
+    
+}
+
+td{
+    border-bottom: 1px solid black;
+    
+}
+
+input{
+    border-radius: 25px;
+    border-color: lightgray;
+    text-align: end;
+    width: 15%;
+}
+
+input:focus{
+    outline: none;
+}
+
+#total{
+    font-size: 2em;
+    text-align: end;
+    padding-right: 15%;
+}
