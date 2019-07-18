@@ -1,9 +1,8 @@
+
 .container-filter{
 	border: 1px black solid;
-	width: 20%;
-	height: 550px;
-	margin-top: 2%;
-	display: inline-block;
+	height: 100%;
+	width: 320px;
 }
 
 h1, h4{

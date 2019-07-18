@@ -1,7 +1,13 @@
+#main-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
 main {
   border: 1px solid black;
   width: 70%;
-  float: right;
+  padding-bottom: 25px;
 }
 
 #request-results-container {
