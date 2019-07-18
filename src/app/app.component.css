@@ -2,10 +2,12 @@
   display: flex;
   justify-content: space-between;
   border: 1px solid black;
-  width: 70%;
-  height: 20%;
+  width: 80%;
+  height: 15%;
   padding: 0 10px; 
-  margin: 30px auto 50px auto;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  float: right;
   align-items: center;
 }
 
@@ -36,6 +38,8 @@
   font-size: 2.2rem;
   font-weight: 700;
   font-family: 'Comic Sans MS', arial;
+  margin-bottom: 0px;
+  margin-top: 5px;
 }
 
 #shop-cart {
