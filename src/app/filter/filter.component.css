@@ -1,0 +1,45 @@
+.container-filter{
+	border: 1px black solid;
+	width: 20%;
+	height: 550px;
+	margin-top: 2%;
+	display: inline-block;
+}
+
+h1, h4{
+	text-align: center;
+	text-decoration: underline;
+}
+
+#container-genre > h4 {
+margin-top: 10%;
+}
+
+#container-rating {
+	height: 45%;
+
+}
+input[type=checkbox]{
+	margin-right: 5%;
+}
+#container-genre{
+	height: 45%;
+
+}
+
+ul {
+	list-style-type: none;
+}
+
+#container-rating > button {
+	background-color: darkred;
+	border-radius: 5px;
+	color: white;
+	border: none;
+	height:35px;
+	margin-left: 25%;
+}
+
+#container-rating > button:hover {
+box-shadow: 5px 5px 5px grey;
+}
