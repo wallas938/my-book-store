@@ -1,70 +1,82 @@
- 
 
- h2{
-     text-align: center;
-     margin-top: 5%;
- }
-
- .fa-times-circle{
-     color: lightgrey;
- }
- 
- .fa-times-circle:hover{
-     color: red;
- }
-
- table{
-    border-collapse:separate; 
-    border-spacing:0 15px;
+main {
+    border: 1px solid black;
     width: 85%;
-    
- }
-
-tr, td{             
-        width:150px; 
-        text-align: center;
-        
-        padding: 5px; 
-   }
-
-
-.delete{
-    text-align: end;
+    margin: 0 auto;
+    padding: 20px 35px 50px 35px;
 }
 
-
-.titleAuthor{
-    text-align: start;
+h2 {
+    text-align: center;
 }
 
-.price{
-    text-align: end;
-}
-
-
-.select{
-    text-align: end;
+#item-container {
     
 }
 
-td{
-    border-bottom: 1px solid black;
+#chosen-book {
     
+    display: flex;
+    flex: 1;
 }
 
-input{
-    border-radius: 25px;
-    border-color: lightgray;
-    text-align: end;
-    width: 15%;
+#block-border-bottom {
+    border: 1px solid black;
+    display: flex;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding-bottom: 10px;
+    flex: 1px;
 }
 
-input:focus{
-    outline: none;
+#logo-delete {
+    
+    padding-top: 40px;
+    color: lightgrey;
+    width: 5%;
 }
+
+#logo-delete:hover {
+    color: red;
+}
+
+#title_author {
+    
+    flex: 2;
+    padding: 5% 0 0 2%;
+}
+
+#number-to-buy {
+    flex: 2;
+    padding: 5%;
+
+}
+
+#price {
+
+    flex: 0.5;
+    padding: 5%;
+}
+
+
+.author{
+    line-height: 0px;
+}
+
+.book-img{
+    padding-top: 9%;
+}
+
+
 
 #total{
-    font-size: 2em;
-    text-align: end;
-    padding-right: 15%;
+    float: right;
+    border: 1px solid black;
+    height: 60px;
+    padding-top: 20px;
+    margin: 2px 78px 0 0;
+    width: 200px; 
+    text-align: center;
+    font-weight: bold;
 }
