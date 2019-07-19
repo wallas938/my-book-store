@@ -1,13 +1,14 @@
 #main-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
 }
 
 main {
   border: 1px solid black;
-  width: 70%;
+  width: 75%;
   padding-bottom: 25px;
+  margin-right: 20px;
 }
 
 #request-results-container {
