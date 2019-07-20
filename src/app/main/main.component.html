@@ -1,64 +1,34 @@
 <div id="main-container">
   <app-filter></app-filter>
   <main>
-      <h1>Resultat pour [Xxxxxxx Xxxx] </h1>
+      <h1 *ngIf="books">Resultat pour: {{ lastQuery }} </h1>
       <section id="request-results-container">
-        <div class="book-indentity">
-          <p class="book-title">Titre Du Livre</p>
-          <p class="book-author">Auteur</p>
-          <div class="book-thumbnail">
-            <img class="" src="">
-            <i class="fas fa-image"></i>
-          </div>
-          <p class="book-price">Prix</p>
-          <p class="book-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-          <div class="btns-block">
-            <button class="book-details" class="mybtns">DESCRIPTION</button>
-            <button class="add-to-cart" class="mybtns"><i class="fas fa-shopping-cart"></i></button>
+        <div *ngFor="let book of books" class="card mb-3" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img [src]="book.thumbnail" class="card-img" alt="image de presentation du livre">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{ book.title }}</h5>
+                <p class="card-author">{{ book.author }}</p>
+                <p class="card-eval"><small class="text-muted">note: {{ book.averageRating }}</small></p>
+                <p class="card-price"> {{ book.price }} {{ book.currencyCode }} </p>
+                <div id="btns-block">
+                  <button id="" class="mybtns details"> <!-- GERER VISUEL DU BTN DESCRIPTION-->
+                      <i class="fas fa-info"></i>
+                      DESCRIPTION
+                  </button>
+                  <button id="add-to-cart" class="mybtns">
+                    <i class="fas fa-shopping-bag">
+                    </i>
+                    Ajouter au panier
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="book-indentity">
-            <p class="book-title">Titre Du Livre</p>
-            <p class="book-author">Auteur</p>
-            <div class="book-thumbnail">
-              <img class="" src="">
-              <i class="fas fa-image"></i>
-            </div>
-            <p class="book-price">Prix</p>
-            <p class="book-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-            <div class="btns-block">
-              <button class="book-details" class="mybtns">DESCRIPTION</button>
-              <button class="add-to-cart" class="mybtns"><i class="fas fa-shopping-cart"></i></button>
-            </div>
-          </div>
-          <div class="book-indentity">
-              <p class="book-title">Titre Du Livre</p>
-              <p class="book-author">Auteur</p>
-              <div class="book-thumbnail">
-                <img class="" src="">
-                <i class="fas fa-image"></i>
-              </div>
-              <p class="book-price">Prix</p>
-              <p class="book-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-              <div class="btns-block">
-                <button class="book-details" class="mybtns">DESCRIPTION</button>
-                <button class="add-to-cart" class="mybtns"><i class="fas fa-shopping-cart"></i></button>
-              </div>
-            </div>
-            <div class="book-indentity">
-                <p class="book-title">Titre Du Livre</p>
-                <p class="book-author">Auteur</p>
-                <div class="book-thumbnail">
-                  <img class="" src="">
-                  <i class="fas fa-image"></i>
-                </div>
-                <p class="book-price">Prix</p>
-                <p class="book-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
-                <div class="btns-block">
-                  <button class="book-details" class="mybtns">DESCRIPTION</button>
-                  <button class="add-to-cart" class="mybtns"><i class="fas fa-shopping-cart"></i></button>
-                </div>
-              </div>
       </section>
     </main>
 </div>
