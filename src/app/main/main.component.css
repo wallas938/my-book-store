@@ -9,16 +9,45 @@ main {
   width: 75%;
   padding-bottom: 25px;
   margin-right: 20px;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: #82ccdd;
 }
 
 #request-results-container {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
+  max-height: 550px;
 }
 
 h1, .book-indentity {
   text-align: center;
   margin-top: 50px;
+}
+
+.card{
+  background-color: #0a3d62;
+}
+
+.card-title {
+  width: 300px;
+  min-height: 50px;
+}
+
+.card-img {
+  width: 180px;
+  height: 275px;
+}
+
+.book-indentity > p {
+  width: 200px;
+  height: 50px;
+}
+
+.book-thumbnial {
+  width: 128px;
+  height: 190px;
 }
 
 .fas.fa-image {
@@ -32,6 +61,15 @@ h1, .book-indentity {
 .btns-block {
   width: 200px;
   display: flex;
+  justify-content: center;
+}
+
+#add-to-cart {
+  margin-left: 10px;
+}
+
+#btns-block {
+  display: flex;
   justify-content: space-evenly;
 }
 
@@ -42,6 +80,14 @@ h1, .book-indentity {
   background-size: cover;
   border-radius: 3px;
   border: #FFF;
+}
+
+.details {
+  color: red;
+}
+
+#add-to-cart i {
+  color: green;
 }
 
 .book-details {
