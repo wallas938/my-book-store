@@ -9,4 +9,6 @@ export interface Ibook {
     language: String,
     thumbnail: String,
     averageRating: Number,
+    pageCount: String,
+    isEbook: Boolean,
 }

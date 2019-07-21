@@ -53,10 +53,8 @@ export class BookService {
 
   
 
-  toJSON(books: any[]) {
-
+  toJSONStringfied(books: any[]) {
     //this.books = JSON.stringify(books)
-
   }
   
 }
