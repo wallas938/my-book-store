@@ -26,7 +26,10 @@ export class AppComponent {
 
   clickHandler() {
 
-    this.lastQuery = this.userQuery.value
+    this.bookService.queryHandler(this.userQuery.value)
+    this.userQuery.setValue('')
+
+    /* this.lastQuery = this.userQuery.value
     this.booksSubscription = this.bookService.getBook(this.userQuery.value).subscribe(
       books => {
         this.books = books.items.map(book => {
@@ -49,7 +52,7 @@ export class AppComponent {
       )
     
 
-    this.userQuery.setValue('')
+    this.userQuery.setValue('') */
   }
 
   ngOnDestroy(): void {
