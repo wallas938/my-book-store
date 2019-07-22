@@ -38,6 +38,8 @@ export class BookService {
             language: book.volumeInfo.language,
             thumbnail: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "https://www.404.ie/assets/img/logo_blue.png",
             averageRating: book.volumeInfo.averageRating ? book.volumeInfo.averageRating : "Aucune evaluation est disponible",
+            pageCount: book.volumeInfo.pageCount ? book.volumeInfo.pageCount : 100,
+            isEbook: book.saleInfo.isEbook ? book.saleInfo.isEbook : true,
           }
           return formatedBook
         })
