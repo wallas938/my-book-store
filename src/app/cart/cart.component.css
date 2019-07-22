@@ -1,7 +1,9 @@
+#cartPage-container {
+    width: 100%;
+}
 
 main {
-    border: 1px solid black;
-    width: 85%;
+    width: 90%;
     margin: 0 auto;
     padding: 20px 35px 50px 35px;
 }
@@ -11,11 +13,15 @@ h2 {
 }
 
 #item-container {
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 1px solid black;
+    height: 70%;
+    padding: 25px;
 }
 
 #chosen-book {
-    
     display: flex;
     flex: 1;
 }
@@ -66,16 +72,19 @@ h2 {
 
 .book-img{
     padding-top: 9%;
+    width: 100px;
+    height: 100px;
 }
 
-
+#total-block {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 5px;
+}
 
 #total{
-    float: right;
     border: 1px solid black;
     height: 60px;
-    padding-top: 20px;
-    margin: 2px 78px 0 0;
     width: 200px; 
     text-align: center;
     font-weight: bold;
