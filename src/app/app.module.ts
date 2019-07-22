@@ -7,7 +7,14 @@ import { BookDescriptionComponent } from './book-description/book-description.co
 import { CartComponent } from './cart/cart.component';
 import { FilterComponent } from './filter/filter.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { Routes, RouterModule } from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: '', component: MainComponent },
+  { path: 'index', component: MainComponent },
+  { path: 'cart', component: CartComponent },
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http'
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

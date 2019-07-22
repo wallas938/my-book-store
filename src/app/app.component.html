@@ -2,7 +2,7 @@
 <div id="search-bar">
   
   <div id="title-cart">
-    <p id="brand">MY BOUC STORE</p>
+    <a routerLink="index" routerLinkActive="active" id="brand" style="color: white;">MY BOUC STORE</a>
   </div>
   <div id="input-logo">
     <input type="text" class="form-control" id="user-query" placeholder="Tapez un titre ou un auteur..." [formControl]="userQuery">
@@ -13,9 +13,10 @@
       </button>
     </div>
   </div>
-  <div id="shop-cart">
+  <a routerLink="cart" routerLinkActive="active" id="shop-cart" style="color: white;">
     <i class="fas fa-shopping-cart"></i>
-</div>
+</a>
   </div>
-<app-main></app-main>
+<router-outlet></router-outlet>
+
 
