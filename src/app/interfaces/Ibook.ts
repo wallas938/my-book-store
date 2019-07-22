@@ -2,7 +2,7 @@ export interface Ibook {
     id: String,
     title: String,
     author: String,
-    price: [Number, String],
+    price: Number,
     currencyCode: String,
     categories: Array<String>,
     description: String,

@@ -2,69 +2,29 @@
   <main>
     <h2>PANIER</h2>
     <div id="item-container">
-      <div id="chosen-book">
+      <div *ngFor="let book of booksCart" id="chosen-book">
         <div id="logo-delete">
           <i class="fas fa-times-circle"></i>
         </div>
         <div id="block-border-bottom">
           <div>
-            <img class="book-img" src="https://www.404.ie/assets/img/logo_blue.png">
+            <img class="book-img" [src]="book.thumbnail">
           </div>
           <div id="title_author">
-            <p>Titre du livre</p>
-            <p class="author">Auteur</p>
+            <p> {{ book.title }} </p>
+            <p class="author"> {{ book.author }} </p>
           </div>
           <div id="number-to-buy">
             <input type="number" min="1" max="10" value="1">
           </div>
           <div id="price">
-            <p>10,99€</p>
+            <p> {{ book.price }} {{ book.currencyCode }} </p>
           </div>
         </div>
       </div>
-      <div id="chosen-book">
-        <div id="logo-delete">
-          <i class="fas fa-times-circle"></i>
-        </div>
-        <div id="block-border-bottom">
-          <div>
-            <img class="book-img" src="https://www.404.ie/assets/img/logo_blue.png">
-          </div>
-          <div id="title_author">
-            <p>Titre du livre</p>
-            <p class="author">Auteur</p>
-          </div>
-          <div id="number-to-buy">
-            <input type="number" min="1" max="10" value="1">
-          </div>
-          <div id="price">
-            <p>10,99€</p>
-          </div>
-        </div>
       </div>
-      <div id="chosen-book">
-        <div id="logo-delete">
-          <i class="fas fa-times-circle"></i>
-        </div>
-        <div id="block-border-bottom">
-          <div>
-            <img class="book-img" src="https://www.404.ie/assets/img/logo_blue.png">
-          </div>
-          <div id="title_author">
-            <p>Titre du livre</p>
-            <p class="author">Auteur</p>
-          </div>
-          <div id="number-to-buy">
-            <input type="number" min="1" max="10" value="1">
-          </div>
-          <div id="price">
-            <p>10,99€</p>
-          </div>
-        </div>
-      </div>
-    </div>
     <div id="total-block">
-      <p id="total"> TOTAL : 32,97€</p>
+      <p id="total"> TOTAL : {{ total }} €</p>
     </div>
   </main>
   
