@@ -12,6 +12,8 @@ export class BookService {
     
   ]
 
+  lastQuery: String
+
   booksSubject = new Subject<any>();
 
   constructor(private http: HttpClient) { }
@@ -23,15 +25,14 @@ export class BookService {
 
   queryHandler(query: String) {
 
-    
     this.getBooksFromGoogleApi(query).subscribe(
       books => {
         this.books = books.items.map(book => {
           let formatedBook: Ibook = {
             id: book.id,
             title: book.volumeInfo.title,
-            price: book.saleInfo.listPrice ? book.saleInfo.listPrice.amount : "Price not found" ,
-            currencyCode: book.saleInfo.listPrice ? book.saleInfo.listPrice.currencyCode : "",
+            price: book.saleInfo.listPrice ? book.saleInfo.listPrice.amount : 5.99 ,
+            currencyCode: book.saleInfo.listPrice ? book.saleInfo.listPrice.currencyCode : "EUR",
             author: book.volumeInfo.authors,
             categories: book.volumeInfo.categories,
             description: book.volumeInfo.description,
@@ -52,8 +53,6 @@ export class BookService {
   getBooksFromGoogleApi(query: String): Observable<any> {
     return  this.http.get<any[]>('https://www.googleapis.com/books/v1/volumes?q=' + query)
   }
-
-  
 
   toJSONStringfied(books: any[]) {
     //this.books = JSON.stringify(books)

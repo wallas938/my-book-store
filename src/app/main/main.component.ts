@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { BookService } from '../services/book.service';
 import { Ibook } from '../interfaces/Ibook';
 import { Subscription } from 'rxjs';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-main',
@@ -12,9 +13,11 @@ export class MainComponent implements OnInit {
   
   books: any[]
   booksSubcription: Subscription
-  @Input() lastQuery: String
+  Total: Number
+  lastQuery: String
 
-  constructor(private bookService: BookService) {
+  constructor(private bookService: BookService,
+              private cartService: CartService) {
 
   }
   
@@ -29,8 +32,18 @@ export class MainComponent implements OnInit {
     this.bookService.booksSubjectEmitter()
   }
 
-  test() {
-    console.log(this.books);
-  }
+  cartFiller(bookId: String) {
+
+    let boughtBook: Ibook
+
+    this.books.forEach(element => {
+
+      if(element.id === bookId)
+        boughtBook = element
+
+    });
+
+      this.cartService.addToCart(boughtBook)
+    }
 
 }
