@@ -10,15 +10,16 @@ export class CartService {
 
   books: Ibook[]
 
-  booksCart: Ibook[] = []
+  total: number
 
-  booksSubject = new Subject()
+  totalSubject = new Subject()
+
+  booksCart: Ibook[] = []
 
   booksCartSubject = new Subject()
 
-  booksSubscription: Subscription
-
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService) { 
+  }
 
   ngOnInit(): void {
     
@@ -28,40 +29,58 @@ export class CartService {
   }
 
   addToCart(book: Ibook) {
+
     this.booksCart = [...this.booksCart, book]
 
     this.cartSubjectEmitter()
   }
 
-  deleteFromCart(bookId: String) {
+  deleteBookFromMain(bookId: String) {
     
     this.booksCart = [...this.booksCart].filter(
       book => {
         return bookId !== book.id
       }
     )
+
+    this.cartSubjectEmitter()
   }
+
+  deleteBookFromCart(bookId: String) {
     
-  cartSubjectEmitter () {
-          
-    this.booksSubject.next(this.booksCart.slice())
-    
+    this.deleteBookFromMain(bookId)
+
+    this.bookService.updateMainBooks(bookId)
+
+    this.cartSubjectEmitter()
   }
 
   getTotal(): number {
-    let total: number = 0;
+    this.total = 0;
 
     for(let i = 0; i < this.booksCart.length; i++) {
       
-      total += this.booksCart[i].price
+      this.total += this.booksCart[i].price
 
     }
 
-    return total
+    return this.total
   }
 
   getBooksFromCart(): Ibook[] {
     return this.booksCart
+  }
+
+  cartSubjectEmitter () {
+          
+    this.booksCartSubject.next(this.booksCart.slice())
+    
+  }
+
+  totalSubjectEmitter () {
+          
+    this.totalSubject.next(this.getTotal())
+    
   }
 
 }

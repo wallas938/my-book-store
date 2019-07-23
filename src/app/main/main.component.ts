@@ -63,7 +63,7 @@ export class MainComponent implements OnInit {
   
       });
 
-      this.cartService.deleteFromCart(bookId)
+      this.cartService.deleteBookFromMain(bookId)
     }
 
 }
