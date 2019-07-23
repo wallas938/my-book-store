@@ -45,3 +45,10 @@
 #shop-cart {
   font-size: 2.7rem;
 }
+
+h1 {
+  text-align: center;
+  font-style: italic;
+  color: white;
+  font-weight: bolder;
+}

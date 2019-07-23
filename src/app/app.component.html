@@ -1,22 +1,21 @@
-
 <div id="search-bar">
-  
+
   <div id="title-cart">
     <a routerLink="index" routerLinkActive="active" id="brand" style="color: white;">MY BOUC STORE</a>
   </div>
   <div id="input-logo">
-    <input type="text" class="form-control" id="user-query" placeholder="Tapez un titre ou un auteur..." [formControl]="userQuery">
-    
+    <input type="text" class="form-control" id="user-query" placeholder="Tapez un titre ou un auteur..."
+      [formControl]="userQuery">
+
     <div id="loupe">
       <button (click)="clickHandler()">
-          <i class="fas fa-search"></i>
+        <i class="fas fa-search"></i>
       </button>
     </div>
   </div>
   <a routerLink="cart" routerLinkActive="active" id="shop-cart" style="color: white;">
     <i class="fas fa-shopping-cart"></i>
-</a>
-  </div>
+  </a>
+</div>
+<h1 *ngIf="lastQuery">Resultat pour: "{{ lastQuery }}" </h1>
 <router-outlet></router-outlet>
-
-
