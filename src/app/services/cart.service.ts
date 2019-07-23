@@ -64,7 +64,7 @@ export class CartService {
 
     }
 
-    return this.total
+    return Number(this.total.toFixed(2))
   }
 
   getBooksFromCart(): Ibook[] {
