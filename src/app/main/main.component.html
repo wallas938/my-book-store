@@ -3,6 +3,7 @@
   <main>
       
       <section id="request-results-container">
+
         <div *ngFor="let book of books" class="card mb-3" style="max-width: 540px;">
           <div class="row no-gutters">
             <div class="col-md-4">
@@ -17,12 +18,12 @@
                 <div id="btns-block">
                   <button id="" class="mybtns details"> <!-- GERER VISUEL DU BTN DESCRIPTION-->
                       <i class="fas fa-info"></i>
-                      DESCRIPTION
+                      More
                   </button>
                   <button *ngIf="!book.isInCart" id="add-to-cart" class="mybtns" (click)="cartFiller(book.id)">
                     <i class="fas fa-shopping-bag">
                     </i>
-                    Ajouter au panier
+                    Ajouter
                   </button>
                   <button *ngIf="book.isInCart" id="add-to-cart" class="mybtns" (click)="retrieveHandler(book.id)">
                     <i class="fas fa-shopping-bag">
@@ -34,6 +35,7 @@
             </div>
           </div>
         </div>
+
       </section>
     </main>
 </div>
