@@ -1,10 +1,10 @@
 
 .container-filter{
-	border: 1px black solid;
-	height: 100%;
-	width: 320px;
+	border: 1px lightgrey solid;
+	height: 600px;
+	width: 300px;
 	margin-left: 20px;
-	background-color: #e58e26;
+	/*background-color: #e58e26;*/
 }
 
 h1, h4{

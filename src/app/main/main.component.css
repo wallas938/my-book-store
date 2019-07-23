@@ -5,19 +5,20 @@
 }
 
 main {
-  border: 1px solid black;
+  border: 1px solid lightgrey;
   width: 75%;
   padding-bottom: 25px;
   margin-right: 20px;
   overflow: scroll;
   overflow-x: hidden;
-  background-color: #82ccdd;
+  /*background-color: #82ccdd;*/
 }
 
 #request-results-container {
+  padding-top: 10px;
   display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+  justify-content: space-around;
+     flex-wrap: wrap;
   max-height: 550px;
 }
 
@@ -27,7 +28,9 @@ h1, .book-indentity {
 }
 
 .card{
-  background-color: #0a3d62;
+  background-color:transparent;
+  /*border: 1px none solid;*/
+  width: 500px;
 }
 
 .card-title {
@@ -69,22 +72,29 @@ h1, .book-indentity {
 }
 
 #btns-block {
-  display: flex;
-  justify-content: space-evenly;
+ display: flex;
+ position: absolute;
+ bottom: 5%;
 }
 
 .mybtns {
-  background-image: url("../../assets/img/pexels-photo-129731.jpeg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 3px;
-  border: #FFF;
+  border: 1px #FFF solid;
+  background-color: transparent;
+}
+.mybtns:hover {
+border: 1px lightgrey solid;
 }
 
 .details {
   color: red;
 }
+
+.more {
+color: green;}
 
 #add-to-cart i {
   color: green;
@@ -97,3 +107,5 @@ h1, .book-indentity {
 .mybtns i{
   font-size: 20px;
 }
+
+

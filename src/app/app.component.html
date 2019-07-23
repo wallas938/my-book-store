@@ -1,19 +1,19 @@
 <div id="search-bar">
-
+<img src="assets/img/logo.png" alt="">
   <div id="title-cart">
-    <a routerLink="index" routerLinkActive="active" id="brand" style="color: white;">MY BOUC STORE</a>
+    <a routerLink="index" routerLinkActive="active" id="brand" style="color: black;">MY BOUC STORE</a>
   </div>
   <div id="input-logo">
     <input type="text" class="form-control" id="user-query" placeholder="Tapez un titre ou un auteur..."
       [formControl]="userQuery">
 
     <div id="loupe">
-      <button (click)="clickHandler()">
+      <button id="but" (click)="clickHandler()">
         <i class="fas fa-search"></i>
       </button>
     </div>
   </div>
-  <a routerLink="cart" routerLinkActive="active" id="shop-cart" style="color: white;">
+  <a routerLink="cart" routerLinkActive="active" id="shop-cart" style="color: black;">
     <i class="fas fa-shopping-cart"></i>
   </a>
 </div>
