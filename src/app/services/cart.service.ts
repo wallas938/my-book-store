@@ -49,8 +49,8 @@ export class CartService {
     
   }
 
-  getTotal(): Number {
-    let total: Number = 0;
+  getTotal(): number {
+    let total: number = 0;
 
     for(let i = 0; i < this.booksCart.length; i++) {
       
