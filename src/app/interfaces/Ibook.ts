@@ -11,4 +11,5 @@ export interface Ibook {
     averageRating: number,
     pageCount: String,
     isEbook: Boolean,
+    isInCart: Boolean
 }
