@@ -15,7 +15,9 @@ export class CartComponent implements OnInit {
 
   booksCart: Ibook[]
 
-  total: Number
+  total: number
+
+  totalSubscription: Subscription
   
   booksSubscription: Subscription
 
@@ -41,8 +43,29 @@ export class CartComponent implements OnInit {
     
     )
 
+    this.totalSubscription = this.cartService.totalSubject.subscribe(
+      
+      (total: number) => {
+
+        this.total = total
+
+      }
+    
+    )
+
     this.cartService.cartSubjectEmitter()
 
+    this.cartService.totalSubjectEmitter()
+
+  }
+
+  retrieveHandlerFromCart(bookId: String) {
+
+    this.cartService.deleteBookFromCart(bookId)
+    
+    this.cartService.cartSubjectEmitter()
+
+    this.cartService.totalSubjectEmitter()
   }
 
 }

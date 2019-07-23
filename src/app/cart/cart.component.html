@@ -3,7 +3,7 @@
     <h2>PANIER</h2>
     <div id="item-container">
       <div *ngFor="let book of booksCart" id="chosen-book">
-        <div id="logo-delete">
+        <div (click)="retrieveHandlerFromCart(book.id)" id="logo-delete">
           <i class="fas fa-times-circle"></i>
         </div>
         <div id="block-border-bottom">

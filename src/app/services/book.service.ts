@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Ibook } from '../interfaces/Ibook';
-import { Observable, Subject, Subscriber, Subscription } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +53,17 @@ export class BookService {
 
   getBooksFromGoogleApi(query: String): Observable<any> {
     return  this.http.get<any[]>('https://www.googleapis.com/books/v1/volumes?q=' + query)
+  }
+
+  updateMainBooks(bookId: String) {
+    this.books.forEach(
+      book => {
+
+        if(book.id === bookId )
+          book.isInCart = false
+      }
+    )
+    this.booksSubjectEmitter()
   }
 
   toJSONStringfied(books: any[]) {
