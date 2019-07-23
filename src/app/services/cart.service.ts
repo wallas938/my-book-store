@@ -32,16 +32,15 @@ export class CartService {
 
     this.cartSubjectEmitter()
   }
-  
-  cartFiller(bookId: String) {
 
-    this.booksCart = this.books.filter(
+  deleteFromCart(bookId: String) {
+    
+    this.booksCart = [...this.booksCart].filter(
       book => {
-        return bookId === book.id 
+        return bookId !== book.id
       }
-      )
-      this.cartSubjectEmitter()
-    }
+    )
+  }
     
   cartSubjectEmitter () {
           

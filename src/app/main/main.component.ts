@@ -11,7 +11,7 @@ import { CartService } from '../services/cart.service';
 })
 export class MainComponent implements OnInit {
   
-  books: any[]
+  books: Ibook[]
   booksSubcription: Subscription
   Total: Number
   lastQuery: String
@@ -25,7 +25,7 @@ export class MainComponent implements OnInit {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.booksSubcription = this.bookService.booksSubject.subscribe(
-      (books: any[]) => {
+      (books: Ibook[]) => {
         this.books = books
       }
     )
@@ -38,12 +38,32 @@ export class MainComponent implements OnInit {
 
     this.books.forEach(element => {
 
-      if(element.id === bookId)
+      if(element.id === bookId) {
+
+        element.isInCart = true
+  
         boughtBook = element
+      }
+
 
     });
 
       this.cartService.addToCart(boughtBook)
+    }
+
+    retrieveHandler(bookId: String) {
+
+      this.books.forEach(element => {
+
+        if(element.id === bookId) {
+  
+          element.isInCart = false
+
+        }
+  
+      });
+
+      this.cartService.deleteFromCart(bookId)
     }
 
 }

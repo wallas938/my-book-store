@@ -41,6 +41,7 @@ export class BookService {
             averageRating: book.volumeInfo.averageRating ? book.volumeInfo.averageRating : "Aucune evaluation est disponible",
             pageCount: book.volumeInfo.pageCount ? book.volumeInfo.pageCount : 100,
             isEbook: book.saleInfo.isEbook ? book.saleInfo.isEbook : true,
+            isInCart: false
           }
           return formatedBook
         })
