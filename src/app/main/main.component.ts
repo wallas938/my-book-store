@@ -30,6 +30,8 @@ export class MainComponent implements OnInit {
       }
     )
     this.bookService.booksSubjectEmitter()
+
+    this.cartService.booksCountEmitter()
   }
 
   cartFiller(bookId: String) {
@@ -45,10 +47,12 @@ export class MainComponent implements OnInit {
         boughtBook = element
       }
 
-
+      this.cartService.booksCountEmitter()
     });
 
       this.cartService.addToCart(boughtBook)
+
+      this.cartService.booksCountEmitter()
     }
 
     retrieveHandler(bookId: String) {
@@ -64,6 +68,8 @@ export class MainComponent implements OnInit {
       });
 
       this.cartService.deleteBookFromMain(bookId)
+
+      this.cartService.booksCountEmitter()
     }
 
 }

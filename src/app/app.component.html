@@ -15,6 +15,9 @@
   </div>
   <a routerLink="cart" routerLinkActive="active" id="shop-cart" style="color: black;">
     <i class="fas fa-shopping-cart"></i>
+    <div id="countTest">
+      {{ boughtBooksCount }}
+    </div>
   </a>
 </div>
 <h1 *ngIf="lastQuery">Resultat pour: "{{ lastQuery }}" </h1>

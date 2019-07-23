@@ -8,15 +8,21 @@ import { Subject, Subscription } from 'rxjs';
 })
 export class CartService {
 
-  books: Ibook[]
+  books: Ibook[] = []
 
   total: number
 
   totalSubject = new Subject()
 
+  booksCount: number
+
+  booksCountSubject = new Subject<number>()
+
   booksCart: Ibook[] = []
 
   booksCartSubject = new Subject()
+
+
 
   constructor(private bookService: BookService) { 
   }
@@ -67,6 +73,13 @@ export class CartService {
     return Number(this.total.toFixed(2))
   }
 
+  getBooksCount(): number {
+
+    this.booksCount = this.booksCart.length
+
+    return this.booksCount
+  }
+
   getBooksFromCart(): Ibook[] {
     return this.booksCart
   }
@@ -81,6 +94,10 @@ export class CartService {
           
     this.totalSubject.next(this.getTotal())
     
+  }
+
+  booksCountEmitter() {
+    this.booksCountSubject.next(this.getBooksCount())
   }
 
 }

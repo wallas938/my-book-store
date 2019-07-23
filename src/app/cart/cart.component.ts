@@ -53,6 +53,8 @@ export class CartComponent implements OnInit {
     
     )
 
+    this.cartService.booksCountEmitter()
+
     this.cartService.cartSubjectEmitter()
 
     this.cartService.totalSubjectEmitter()
@@ -66,6 +68,8 @@ export class CartComponent implements OnInit {
     this.cartService.cartSubjectEmitter()
 
     this.cartService.totalSubjectEmitter()
+
+    this.cartService.booksCountEmitter()
   }
 
 }
