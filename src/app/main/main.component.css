@@ -78,17 +78,23 @@ h1, .book-indentity {
 }
 
 .mybtns {
-  background-image: url("../../assets/img/pexels-photo-129731.jpeg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 3px;
-  border: #FFF;
+  border: 1px #FFF solid;
+  background-color: transparent;
+}
+.mybtns:hover {
+border: 1px lightgrey solid;
 }
 
 .details {
   color: red;
 }
+
+.more {
+color: green;}
 
 #add-to-cart i {
   color: green;
