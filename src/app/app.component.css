@@ -56,3 +56,18 @@ h1 {
   background-color: transparent;
   border: none;
 }
+
+#countTest {
+  /*background-color: black;*/
+  /*border: 1.5px white solid;*/
+  border-radius: 50px;
+  font-weight: bold;
+  width: 25px;
+  text-align: center;
+  height: 25px;
+  color: red;
+  position: absolute;
+  top: 6%;
+  left: 92.2%;
+  font-size: 1rem;
+}
