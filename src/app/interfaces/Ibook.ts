@@ -2,7 +2,8 @@ export interface Ibook {
     id: String,
     title: String,
     author: String,
-    price: number,
+    initialPrice: number,
+    changeablePrice: number,
     currencyCode: String,
     categories: Array<String>,
     description: String,
@@ -11,5 +12,6 @@ export interface Ibook {
     averageRating: number,
     pageCount: String,
     isEbook: Boolean,
-    isInCart: Boolean
+    isInCart: Boolean,
+    numberOfBooks: number,
 }
