@@ -15,4 +15,5 @@ export interface Ibook {
     isEbook: Boolean,
     isInCart: Boolean,
     numberOfBooks: number,
+    hidden: Boolean,
 }
