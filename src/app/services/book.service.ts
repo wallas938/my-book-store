@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Ibook } from '../interfaces/Ibook';
 import { Observable, Subject } from 'rxjs';
+import { FilterService } from '../services/filter.service';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,7 @@ export class BookService {
             isEbook: book.saleInfo.isEbook ? book.saleInfo.isEbook : true,
             isInCart: false,
             numberOfBooks: 1,
+            hidden: false,
           }
           return formatedBook
         })
@@ -69,8 +71,10 @@ export class BookService {
     this.booksSubjectEmitter()
   }
 
-  toJSONStringfied(books: any[]) {
-    //this.books = JSON.stringify(books)
+  applyFilter(genres: any[], stars: any[] ){
+    console.log(genres);
+    console.log(stars);
   }
+
   
 }

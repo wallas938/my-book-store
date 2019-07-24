@@ -1,35 +1,39 @@
 <div class="container-filter">
+
 	<h1>Filtre</h1>
+	<form action=""[formGroup]="filterForm" (ngSubmit)="onFilter()">
 	<div id="container-genre">
 		<h4>Genre</h4>
-		<ul>
-			<li><input type="checkbox"> <label for="">Romantique</label></li>
-			<li><input type="checkbox"> <label for="">Comique</label></li>
-			<li><input type="checkbox"> <label for="">Fantastique</label></li>
-			<li><input type="checkbox"> <label for="">Horreur</label></li>
-			<li><input type="checkbox"> <label for="">Erotique</label></li>
-		</ul>
+		
+			<ul>
+				<li><input type="checkbox" formControlName="romantique"> <label for="">Romantique</label></li>
+				<li><input type="checkbox" formControlName="comique"> <label for="">Comique</label></li>
+				<li><input type="checkbox" formControlName="fantastique"> <label for="">Fantastique</label></li>
+				<li><input type="checkbox" formControlName="horreur"> <label for="">Horreur</label></li>
+				<li><input type="checkbox" formControlName="fiction"> <label for="">Fiction</label></li>
+			</ul>	
 	</div>
 	<div id="container-rating">
 		<h4>Rating</h4>
 		<ul>
-			<li><input type="checkbox">
+			<li><input type="checkbox" formControlName="fiveStar">
 				<img src="assets/img/star.svg" style="width:15px" alt=""><img src="assets/img/star.svg" style="width:15px" alt=""><img src="assets/img/star.svg" style="width:15px" alt=""><img src="assets/img/star.svg" style="width:15px" alt=""><img src="assets/img/star.svg" style="width:15px" alt="">
 			</li>
 			<li>
-				<input type="checkbox"><img src="assets/img/star.svg" style="width:15px" alt=""><img src="assets/img/star.svg" style="width:15px" alt=""><img src="assets/img/star.svg" style="width:15px" alt=""><img src="assets/img/star.svg" style="width:15px" alt="">
+				<input type="checkbox" formControlName="fourStar"><img src="assets/img/star.svg" style="width:15px" alt=""><img src="assets/img/star.svg" style="width:15px" alt=""><img src="assets/img/star.svg" style="width:15px" alt=""><img src="assets/img/star.svg" style="width:15px" alt="">
 			</li>
 			<li>
-				<input type="checkbox"><img src="assets/img/star.svg" style="width:15px" alt=""><img src="assets/img/star.svg" style="width:15px" alt=""><img src="assets/img/star.svg" style="width:15px" alt="">
+				<input type="checkbox" formControlName="threeStar"><img src="assets/img/star.svg" style="width:15px" alt=""><img src="assets/img/star.svg" style="width:15px" alt=""><img src="assets/img/star.svg" style="width:15px" alt="">
 			</li>
 			<li>
-				<input type="checkbox"><img src="assets/img/star.svg" style="width:15px" alt=""><img src="assets/img/star.svg" style="width:15px" alt="">
+				<input type="checkbox" formControlName="twoStar"><img src="assets/img/star.svg" style="width:15px" alt=""><img src="assets/img/star.svg" style="width:15px" alt="">
 			</li>
 			<li>
-				<input type="checkbox"><img src="assets/img/star.svg" style="width:15px" alt="">
+				<input type="checkbox" formControlName="oneStar"><img src="assets/img/star.svg" style="width:15px" alt="">
 			</li>
 		</ul>
-		<button>Appliquer le filtre</button>
-	</div>
+		<button type="click">Appliquer le filtre</button>
 
+	</div>
+	</form>
 </div>
