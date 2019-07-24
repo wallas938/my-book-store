@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { BookService } from '../services/book.service';
 import { CartService } from '../services/cart.service';
 import { Ibook } from '../interfaces/Ibook';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
@@ -10,6 +11,8 @@ import { Ibook } from '../interfaces/Ibook';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+
+  numberOfBooks = new FormControl()
 
   books: any[]
 
@@ -27,6 +30,7 @@ export class CartComponent implements OnInit {
               private cartService: CartService) { 
                 this.booksCart = this.cartService.getBooksFromCart()
                 this.total = this.cartService.getTotal()
+                this.numberOfBooks.setValue(1)
               }
 
   ngOnInit(): void {
@@ -70,6 +74,14 @@ export class CartComponent implements OnInit {
     this.cartService.totalSubjectEmitter()
 
     this.cartService.booksCountEmitter()
+  }
+
+  increaseQuantityHandler(bookId: String) {
+    this.cartService.increaseQuantity(bookId)
+  }
+
+  dicreaseQuantityHandler(bookId: String) {
+    this.cartService.dicreaseQuantity(bookId)
   }
 
 }

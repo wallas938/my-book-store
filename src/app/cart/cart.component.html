@@ -15,10 +15,14 @@
             <p class="author"> {{ book.author }} </p>
           </div>
           <div id="number-to-buy">
-            <input type="number" min="1" max="10" value="1">
+            <div id="quantity-changer-block">
+              <span (click)="increaseQuantityHandler(book.id)"><i class="fas fa-sort-up"></i></span>
+              <span> {{ book.numberOfBooks }} </span>
+              <span (click)="dicreaseQuantityHandler(book.id)"><i class="fas fa-sort-down"></i></span>
+            </div> 
           </div>
           <div id="price">
-            <p> {{ book.price }} {{ book.currencyCode }} </p>
+            <p> {{ book.changeablePrice }} {{ book.currencyCode }} </p>
           </div>
         </div>
       </div>

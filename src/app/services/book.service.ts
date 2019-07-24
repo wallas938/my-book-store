@@ -31,7 +31,8 @@ export class BookService {
           let formatedBook: Ibook = {
             id: book.id,
             title: book.volumeInfo.title,
-            price: book.saleInfo.listPrice ? book.saleInfo.listPrice.amount : 5.99 ,
+            initialPrice: book.saleInfo.listPrice ? book.saleInfo.listPrice.amount : 5.99 ,
+            changeablePrice: book.saleInfo.listPrice ? book.saleInfo.listPrice.amount : 5.99,
             currencyCode: book.saleInfo.listPrice ? book.saleInfo.listPrice.currencyCode : "EUR",
             author: book.volumeInfo.authors,
             identifier: book.volumeInfo.industryIdentifiers[0].identifier ? book.volumeInfo.industryIdentifiers[0].identifier : "Pas d'ISBN connue",
@@ -42,7 +43,8 @@ export class BookService {
             averageRating: book.volumeInfo.averageRating ? book.volumeInfo.averageRating : "Aucune evaluation est disponible",
             pageCount: book.volumeInfo.pageCount ? book.volumeInfo.pageCount : 100,
             isEbook: book.saleInfo.isEbook ? book.saleInfo.isEbook : true,
-            isInCart: false
+            isInCart: false,
+            numberOfBooks: 1,
           }
           return formatedBook
         })

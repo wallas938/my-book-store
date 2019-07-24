@@ -14,7 +14,7 @@
                 <h5 class="card-title">{{ book.title }}</h5>
                 <p class="card-author">{{ book.author }}</p>
                 <p class="card-eval"><small class="text-muted">note: {{ book.averageRating }}</small></p>
-                <p class="card-price"> {{ book.price }} {{ book.currencyCode }} </p>
+                <p class="card-price"> {{ book.changeablePrice }} {{ book.currencyCode }} </p>
                 <div id="btns-block">
                   <!-- Button trigger modal [attr.data-target]="'#' + book.id" -->
                   <button id="" class="mybtns details" data-toggle="modal" [attr.data-target]="'#' + book.id"> <!-- GERER VISUEL DU BTN DESCRIPTION-->

@@ -66,7 +66,7 @@ export class CartService {
 
     for(let i = 0; i < this.booksCart.length; i++) {
       
-      this.total += this.booksCart[i].price
+      this.total += this.booksCart[i].changeablePrice
 
     }
 
@@ -82,6 +82,48 @@ export class CartService {
 
   getBooksFromCart(): Ibook[] {
     return this.booksCart
+  }
+
+  increaseQuantity(bookId: String): void {
+    this.booksCart = [...this.booksCart].map<Ibook>(
+      book => {
+        if(book.id === bookId) {
+
+          book.numberOfBooks < 9 && book.numberOfBooks++
+
+          
+          book.changeablePrice = +(book.initialPrice * book.numberOfBooks ).toFixed(2) 
+        }
+
+        return book
+      }
+    )
+    this.cartSubjectEmitter()
+
+    this.totalSubjectEmitter()
+
+    this.booksCountEmitter()
+  }
+
+  dicreaseQuantity(bookId: String): void {
+    this.booksCart = [...this.booksCart].map<Ibook>(
+      book => {
+        if(book.id === bookId) {
+
+          book.numberOfBooks > 1 && book.numberOfBooks--
+
+          book.changeablePrice = +(book.initialPrice * book.numberOfBooks ).toFixed(2)
+
+        }
+
+        return book
+      }
+    )
+    this.cartSubjectEmitter()
+
+    this.totalSubjectEmitter()
+
+    this.booksCountEmitter()
   }
 
   cartSubjectEmitter () {
