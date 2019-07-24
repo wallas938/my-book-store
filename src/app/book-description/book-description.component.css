@@ -9,10 +9,12 @@
 	display: flex;
 	justify-content: flex-end;
 }
-
+.modal-content {
+	width: 120%;
+}
 #image-description{
 	width: 250px;
-	height: 200px;
+	height: 300px;
 
 }
 

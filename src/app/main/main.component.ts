@@ -72,4 +72,9 @@ export class MainComponent implements OnInit {
       this.cartService.booksCountEmitter()
     }
 
+    open(bookId : String){
+      console.log("works");
+      console.log(bookId);
+    }
+
 }

@@ -4,6 +4,7 @@ export interface Ibook {
     author: String,
     price: number,
     currencyCode: String,
+    identifier: number,
     categories: Array<String>,
     description: String,
     language: String,

@@ -16,10 +16,12 @@
                 <p class="card-eval"><small class="text-muted">note: {{ book.averageRating }}</small></p>
                 <p class="card-price"> {{ book.price }} {{ book.currencyCode }} </p>
                 <div id="btns-block">
-                  <button id="" class="mybtns details"> <!-- GERER VISUEL DU BTN DESCRIPTION-->
+                  <!-- Button trigger modal [attr.data-target]="'#' + book.id" -->
+                  <button id="" class="mybtns details" data-toggle="modal" [attr.data-target]="'#' + book.id"> <!-- GERER VISUEL DU BTN DESCRIPTION-->
                       <i class="fas fa-info"></i>
-                      More
+                      Description
                   </button>
+                  <app-book-description></app-book-description>
                   <button *ngIf="!book.isInCart" id="add-to-cart" class="mybtns more" (click)="cartFiller(book.id)">
                     <i class="fas fa-shopping-bag">
                     </i>
