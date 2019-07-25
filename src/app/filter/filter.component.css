@@ -32,7 +32,16 @@ ul {
 	list-style-type: none;
 }
 
-#container-rating > button {
+#filter-list {
+	overflow: scroll;
+	height: 200px;
+}
+
+button#resetFilter {
+	margin-left: 40%;
+}
+
+button#applyFilter {
 	background-color: darkred;
 	border-radius: 5px;
 	color: white;

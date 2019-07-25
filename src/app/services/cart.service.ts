@@ -24,14 +24,14 @@ export class CartService {
 
 
 
-  constructor(private bookService: BookService) { 
+  constructor(private bookService: BookService) {
   }
 
   ngOnInit(): void {
-    
+
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    
+
   }
 
   addToCart(book: Ibook) {
@@ -42,7 +42,7 @@ export class CartService {
   }
 
   deleteBookFromMain(bookId: String) {
-    
+
     this.booksCart = [...this.booksCart].filter(
       book => {
         return bookId !== book.id
@@ -53,7 +53,7 @@ export class CartService {
   }
 
   deleteBookFromCart(bookId: String) {
-    
+
     this.deleteBookFromMain(bookId)
 
     this.bookService.updateMainBooks(bookId)
@@ -64,8 +64,8 @@ export class CartService {
   getTotal(): number {
     this.total = 0;
 
-    for(let i = 0; i < this.booksCart.length; i++) {
-      
+    for (let i = 0; i < this.booksCart.length; i++) {
+
       this.total += this.booksCart[i].changeablePrice
 
     }
@@ -87,12 +87,12 @@ export class CartService {
   increaseQuantity(bookId: String): void {
     this.booksCart = [...this.booksCart].map<Ibook>(
       book => {
-        if(book.id === bookId) {
+        if (book.id === bookId) {
 
           book.numberOfBooks < 9 && book.numberOfBooks++
 
-          
-          book.changeablePrice = +(book.initialPrice * book.numberOfBooks ).toFixed(2) 
+
+          book.changeablePrice = +(book.initialPrice * book.numberOfBooks).toFixed(2)
         }
 
         return book
@@ -108,11 +108,11 @@ export class CartService {
   dicreaseQuantity(bookId: String): void {
     this.booksCart = [...this.booksCart].map<Ibook>(
       book => {
-        if(book.id === bookId) {
+        if (book.id === bookId) {
 
           book.numberOfBooks > 1 && book.numberOfBooks--
 
-          book.changeablePrice = +(book.initialPrice * book.numberOfBooks ).toFixed(2)
+          book.changeablePrice = +(book.initialPrice * book.numberOfBooks).toFixed(2)
 
         }
 
@@ -126,16 +126,16 @@ export class CartService {
     this.booksCountEmitter()
   }
 
-  cartSubjectEmitter () {
-          
+  cartSubjectEmitter() {
+
     this.booksCartSubject.next(this.booksCart.slice())
-    
+
   }
 
-  totalSubjectEmitter () {
-          
+  totalSubjectEmitter() {
+
     this.totalSubject.next(this.getTotal())
-    
+
   }
 
   booksCountEmitter() {

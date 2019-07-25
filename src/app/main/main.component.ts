@@ -10,17 +10,16 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  
+
   books: Ibook[]
   booksSubcription: Subscription
   Total: Number
   lastQuery: String
 
   constructor(private bookService: BookService,
-              private cartService: CartService) {
-
+    private cartService: CartService) {
   }
-  
+
   ngOnInit() {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
@@ -40,41 +39,41 @@ export class MainComponent implements OnInit {
 
     this.books.forEach(element => {
 
-      if(element.id === bookId) {
+      if (element.id === bookId) {
 
         element.isInCart = true
-  
+
         boughtBook = element
       }
 
       this.cartService.booksCountEmitter()
     });
 
-      this.cartService.addToCart(boughtBook)
+    this.cartService.addToCart(boughtBook)
 
-      this.cartService.booksCountEmitter()
-    }
+    this.cartService.booksCountEmitter()
+  }
 
-    retrieveHandler(bookId: String) {
+  retrieveHandler(bookId: String) {
 
-      this.books.forEach(element => {
+    this.books.forEach(element => {
 
-        if(element.id === bookId) {
-  
-          element.isInCart = false
+      if (element.id === bookId) {
 
-        }
-  
-      });
+        element.isInCart = false
 
-      this.cartService.deleteBookFromMain(bookId)
+      }
 
-      this.cartService.booksCountEmitter()
-    }
+    });
 
-    open(bookId : String){
-      console.log("works");
-      console.log(bookId);
-    }
+    this.cartService.deleteBookFromMain(bookId)
+
+    this.cartService.booksCountEmitter()
+  }
+
+  open(bookId: String) {
+    console.log("works");
+    console.log(bookId);
+  }
 
 }

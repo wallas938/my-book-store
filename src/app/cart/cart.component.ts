@@ -21,40 +21,40 @@ export class CartComponent implements OnInit {
   total: number
 
   totalSubscription: Subscription
-  
+
   booksSubscription: Subscription
 
   booksCartSubscription: Subscription
 
   constructor(private bookService: BookService,
-              private cartService: CartService) { 
-                this.booksCart = this.cartService.getBooksFromCart()
-                this.total = this.cartService.getTotal()
-                this.numberOfBooks.setValue(1)
-              }
+    private cartService: CartService) {
+    this.booksCart = this.cartService.getBooksFromCart()
+    this.total = this.cartService.getTotal()
+    this.numberOfBooks.setValue(1)
+  }
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    
+
     this.booksCartSubscription = this.cartService.booksCartSubject.subscribe(
-      
+
       (booksCart: any[]) => {
 
         this.booksCart = booksCart
 
       }
-    
+
     )
 
     this.totalSubscription = this.cartService.totalSubject.subscribe(
-      
+
       (total: number) => {
 
         this.total = total
 
       }
-    
+
     )
 
     this.cartService.booksCountEmitter()
@@ -68,7 +68,7 @@ export class CartComponent implements OnInit {
   retrieveHandlerFromCart(bookId: String) {
 
     this.cartService.deleteBookFromCart(bookId)
-    
+
     this.cartService.cartSubjectEmitter()
 
     this.cartService.totalSubjectEmitter()
