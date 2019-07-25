@@ -60,9 +60,14 @@ h2 {
 }
 
 #price {
-
-    flex: 0.5;
+    flex: 2.0;
     padding: 5%;
+}
+
+.remise {
+    
+    font-size: .9rem;
+    color: red;
 }
 
 
