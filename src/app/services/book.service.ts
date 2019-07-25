@@ -32,8 +32,8 @@ export class BookService {
           let formatedBook: Ibook = {
             id: book.id,
             title: book.volumeInfo.title,
-            initialPrice: book.saleInfo.listPrice ? book.saleInfo.listPrice.amount : 5.99,
-            changeablePrice: book.saleInfo.listPrice ? book.saleInfo.listPrice.amount : 5.99,
+            initialPrice: book.saleInfo.listPrice ? book.saleInfo.listPrice.amount : 9.99,
+            changeablePrice: book.saleInfo.listPrice ? book.saleInfo.listPrice.amount : 9.99,
             currencyCode: book.saleInfo.listPrice ? book.saleInfo.listPrice.currencyCode : "EUR",
             author: book.volumeInfo.authors,
             identifier: book.volumeInfo.industryIdentifiers ? book.volumeInfo.industryIdentifiers[0].identifier : "Pas d'ISBN connue",
