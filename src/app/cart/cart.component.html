@@ -21,8 +21,13 @@
               <span (click)="dicreaseQuantityHandler(book.id)"><i class="fas fa-sort-down"></i></span>
             </div> 
           </div>
-          <div id="price">
-            <p> {{ book.changeablePrice }} {{ book.currencyCode }} </p>
+          <div *ngIf="book.numberOfBooks < 10" id="price">
+            <p> {{ book.changeablePrice }} {{ book.currencyCode }}</p>
+            <p class="remise">vous beneficier du remise de - 5%! Pour une remise de 10% achetez prenez 10 exemplaires</p>
+          </div>
+          <div *ngIf="book.numberOfBooks === 10" id="price">
+            <p> {{ book.changeablePrice }} {{ book.currencyCode }}</p>
+            <p class="remise">Vous avez maintenant droit a une remise de - 10%!!!!!!</p>
           </div>
         </div>
       </div>

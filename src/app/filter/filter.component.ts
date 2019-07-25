@@ -42,7 +42,7 @@ export class FilterComponent implements OnInit {
 	constructor(private filterService: FilterService) { }
 
 	ngOnInit() {
-
+		
 	}
 
 	onFilter() {

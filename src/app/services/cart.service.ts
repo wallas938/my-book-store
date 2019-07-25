@@ -89,15 +89,25 @@ export class CartService {
       book => {
         if (book.id === bookId) {
 
-          book.numberOfBooks < 9 && book.numberOfBooks++
+          book.numberOfBooks < 10 && book.numberOfBooks++
+          //let prixMoinsCinqPourcents = book.initialPrice - (book.changeablePrice * 0.05)
 
+          //console.log(+(book.initialPrice - (book.initialPrice * 0.05)).toFixed(2))
 
-          book.changeablePrice = +(book.initialPrice * book.numberOfBooks).toFixed(2)
+          if (book.numberOfBooks === 10) {
+
+            book.changeablePrice = +(((book.initialPrice - (book.initialPrice * book.bigReduction)) * book.numberOfBooks).toFixed(2))
+            //book.changeablePrice = +(((book.initialPrice - (book.initialPrice * 0.05)) -  * book.numberOfBooks) - ((book.initialPrice - (book.initialPrice * 0.05)) * book.numberOfBooks) * 0.10).toFixed(2)
+
+          } else {
+
+            book.changeablePrice = +(((book.priceAfterReduction * book.numberOfBooks)).toFixed(2))
+          }
+
+          return book
         }
 
-        return book
-      }
-    )
+      })
     this.cartSubjectEmitter()
 
     this.totalSubjectEmitter()
@@ -112,7 +122,7 @@ export class CartService {
 
           book.numberOfBooks > 1 && book.numberOfBooks--
 
-          book.changeablePrice = +(book.initialPrice * book.numberOfBooks).toFixed(2)
+          book.changeablePrice = +(((book.priceAfterReduction * book.numberOfBooks)).toFixed(2))
 
         }
 
