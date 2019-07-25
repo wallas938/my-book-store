@@ -5,14 +5,34 @@
 	<div id="container-genre">
 		<h4>Genre</h4>
 		
-			<ul>
-				<li><input type="checkbox" formControlName="romantique"> <label for="">Romantique</label></li>
-				<li><input type="checkbox" formControlName="comique"> <label for="">Comique</label></li>
-				<li><input type="checkbox" formControlName="fantastique"> <label for="">Fantastique</label></li>
-				<li><input type="checkbox" formControlName="horreur"> <label for="">Horreur</label></li>
+			<ul id="filter-list">
+				<li><input type="checkbox" formControlName="frendship"> <label for="">Amitié</label></li>
+				<li><input type="checkbox" formControlName="autobiography"> <label for="">Autobiographie</label></li>
+				<li><input type="checkbox" formControlName="biography"> <label for="">Biograpie</label></li>
+				<li><input type="checkbox" formControlName="comic"> <label for="">Comique</label></li>
+				<li><input type="checkbox" formControlName="criticism"> <label for="">Critique littéraire</label></li>
+				<li><input type="checkbox" formControlName="drama"> <label for="">Drama</label></li>
+				<li><input type="checkbox" formControlName="education"> <label for="">Education</label></li>
+				<li><input type="checkbox" formControlName="fantastic"> <label for="">Fantastique</label></li>
+				<li><input type="checkbox" formControlName="women"> <label for="">Femmes</label></li>
 				<li><input type="checkbox" formControlName="fiction"> <label for="">Fiction</label></li>
+				<li><input type="checkbox" formControlName="french literature"> <label for="">French literature</label></li>
+				<li><input type="checkbox" formControlName="history"> <label for="">Histoire</label></li>
+				<li><input type="checkbox" formControlName="horror"> <label for="">Horreur</label></li>
+				<li><input type="checkbox" formControlName="juvenile"> <label for="">Juvenile / Jeunesse </label></li>
+				<li><input type="checkbox" formControlName="literary"> <label for="">Littéraire</label></li>
+				<li><input type="checkbox" formControlName="politic"> <label for="">Politique</label></li>
+				<li><input type="checkbox" formControlName="philosophy"> <label for="">Philosophie</label></li>
+				<li><input type="checkbox" formControlName="religion"> <label for="">Religion</label></li>
+				<li><input type="checkbox" formControlName="romantique"> <label for="">Romantique</label></li>
+				<li><input type="checkbox" formControlName="science"> <label for="">Science</label></li>
+				<li><input type="checkbox" formControlName="social"> <label for="">Social</label></li>
 			</ul>	
 	</div>
+	
+	<button id="resetFilter" (click)="initFilter()" type="button" class="btn btn-outline-danger btn-lg">
+			<i class="fas fa-ban"></i>
+		</button>
 	<div id="container-rating">
 		<h4>Rating</h4>
 		<ul>
@@ -32,7 +52,7 @@
 				<input type="checkbox" formControlName="oneStar"><img src="assets/img/star.svg" style="width:15px" alt="">
 			</li>
 		</ul>
-		<button type="click">Appliquer le filtre</button>
+		<button type="click" id="applyFilter">Appliquer le filtre</button>
 
 	</div>
 	</form>

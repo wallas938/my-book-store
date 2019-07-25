@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Ibook } from '../interfaces/Ibook';
 import { Observable, Subject } from 'rxjs';
-import { FilterService } from '../services/filter.service';
+import { FilterService } from '../services/filter.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { FilterService } from '../services/filter.service';
 export class BookService {
 
   private books: Ibook[] = [
-    
+
   ]
 
   lastQuery: String
@@ -20,9 +20,9 @@ export class BookService {
   constructor(private http: HttpClient) { }
 
   booksSubjectEmitter() {
-    
+
     this.booksSubject.next(this.books.slice())
-  } 
+  }
 
   queryHandler(query: String) {
 
@@ -32,11 +32,11 @@ export class BookService {
           let formatedBook: Ibook = {
             id: book.id,
             title: book.volumeInfo.title,
-            initialPrice: book.saleInfo.listPrice ? book.saleInfo.listPrice.amount : 5.99 ,
+            initialPrice: book.saleInfo.listPrice ? book.saleInfo.listPrice.amount : 5.99,
             changeablePrice: book.saleInfo.listPrice ? book.saleInfo.listPrice.amount : 5.99,
             currencyCode: book.saleInfo.listPrice ? book.saleInfo.listPrice.currencyCode : "EUR",
             author: book.volumeInfo.authors,
-            identifier: book.volumeInfo.industryIdentifiers[0].identifier ? book.volumeInfo.industryIdentifiers[0].identifier : "Pas d'ISBN connue",
+            identifier: book.volumeInfo.industryIdentifiers ? book.volumeInfo.industryIdentifiers[0].identifier : "Pas d'ISBN connue",
             categories: book.volumeInfo.categories ? book.volumeInfo.categories : "Aucune catégorie trouvée",
             description: book.volumeInfo.description ? book.volumeInfo.description : "Aucune description disponible",
             language: book.volumeInfo.language ? book.volumeInfo.language : "Pas de langue définis",
@@ -50,6 +50,7 @@ export class BookService {
           }
           return formatedBook
         })
+        console.log(this.books)
         this.booksSubjectEmitter()
         return this.books
       }
@@ -57,24 +58,52 @@ export class BookService {
   }
 
   getBooksFromGoogleApi(query: String): Observable<any> {
-    return  this.http.get<any[]>('https://www.googleapis.com/books/v1/volumes?q=' + query)
+    return this.http.get<any[]>('https://www.googleapis.com/books/v1/volumes?q=' + query)
   }
 
   updateMainBooks(bookId: String) {
     this.books.forEach(
       book => {
 
-        if(book.id === bookId )
+        if (book.id === bookId)
           book.isInCart = false
       }
     )
     this.booksSubjectEmitter()
   }
 
-  applyFilter(genres: any[], stars: any[] ){
-    console.log(genres);
-    console.log(stars);
-  }
+  applyFilter(categories: any[], rates: any[]) {
 
+    this.books.forEach(
+      book => {
+        let haveIt = false
+        if (categories.length) {
+          for (let i = 0; i < categories.length; i++) {
+            for(let j = 0; j < book.categories.length; j++) {
+
+              if (book.categories[j].toLowerCase().trim().includes(categories[i].toLowerCase().trim())) {
   
+                haveIt = true
+
+              }
+            }
+          }
+
+          if (haveIt) {
+            book.hidden = false
+            haveIt = false
+          } else {
+
+            book.hidden = true
+          }
+
+        } else {
+
+          book.hidden = false
+
+        }
+
+      })
+    this.booksSubjectEmitter()
+  }
 }

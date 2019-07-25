@@ -11,16 +11,16 @@ import { Ibook } from '../interfaces/Ibook';
 })
 export class BookDescriptionComponent implements OnInit {
 
-	booksDesc: Ibook[]
-	  booksDescSubcription: Subscription
+  booksDesc: Ibook[]
+  booksDescSubcription: Subscription
 
   constructor(private bookService: BookService,
-  			private cartService: CartService) { 
-              }
+    private cartService: CartService) {
+  }
 
   ngOnInit() {
 
-  	this.booksDescSubcription = this.bookService.booksSubject.subscribe(
+    this.booksDescSubcription = this.bookService.booksSubject.subscribe(
       (booksDesc: Ibook[]) => {
         this.booksDesc = booksDesc
       }
@@ -28,43 +28,43 @@ export class BookDescriptionComponent implements OnInit {
     this.bookService.booksSubjectEmitter()
     this.cartService.booksCountEmitter()
   }
-    
-    cartFiller(bookId: String) {
+
+  cartFiller(bookId: String) {
 
     let boughtBook: Ibook
 
     this.booksDesc.forEach(element => {
 
-      if(element.id === bookId) {
+      if (element.id === bookId) {
 
         element.isInCart = true
-  
+
         boughtBook = element
       }
 
       this.cartService.booksCountEmitter()
     });
 
-      this.cartService.addToCart(boughtBook)
+    this.cartService.addToCart(boughtBook)
 
-      this.cartService.booksCountEmitter()
-    }
+    this.cartService.booksCountEmitter()
+  }
 
-    retrieveHandler(bookId: String) {
+  retrieveHandler(bookId: String) {
 
-      this.booksDesc.forEach(element => {
+    this.booksDesc.forEach(element => {
 
-        if(element.id === bookId) {
-  
-          element.isInCart = false
+      if (element.id === bookId) {
 
-        }
-  
-      });
+        element.isInCart = false
 
-      this.cartService.deleteBookFromMain(bookId)
+      }
 
-      this.cartService.booksCountEmitter()
-    } 
+    });
+
+    this.cartService.deleteBookFromMain(bookId)
+
+    this.cartService.booksCountEmitter()
+  }
 
 }
