@@ -106,6 +106,7 @@ export class CartService {
 
           return book
         }
+          return book
 
       })
     this.cartSubjectEmitter()
