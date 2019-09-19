@@ -39,6 +39,8 @@ export class CartService {
     this.booksCart = [...this.booksCart, book]
 
     this.cartSubjectEmitter()
+
+    window.localStorage.setItem("cartBooks", JSON.stringify(this.booksCart));
   }
 
   deleteBookFromMain(bookId: String) {
@@ -50,6 +52,8 @@ export class CartService {
     )
 
     this.cartSubjectEmitter()
+
+    window.localStorage.setItem("cartBooks", JSON.stringify(this.booksCart));
   }
 
   deleteBookFromCart(bookId: String) {
@@ -59,6 +63,8 @@ export class CartService {
     this.bookService.updateMainBooks(bookId)
 
     this.cartSubjectEmitter()
+
+    window.localStorage.setItem("cartBooks", JSON.stringify(this.booksCart));
   }
 
   getTotal(): number {
@@ -69,6 +75,7 @@ export class CartService {
       this.total += this.booksCart[i].changeablePrice
 
     }
+    window.localStorage.setItem("total", JSON.stringify(this.total));
 
     return Number(this.total.toFixed(2))
   }
@@ -114,6 +121,12 @@ export class CartService {
     this.totalSubjectEmitter()
 
     this.booksCountEmitter()
+
+    window.localStorage.setItem("cartBooks", JSON.stringify(this.booksCart));
+
+    window.localStorage.setItem("total", JSON.stringify(this.total));
+
+    window.localStorage.setItem("booksCount", JSON.stringify(this.booksCount));
   }
 
   dicreaseQuantity(bookId: String): void {
@@ -135,22 +148,30 @@ export class CartService {
     this.totalSubjectEmitter()
 
     this.booksCountEmitter()
+
+    window.localStorage.setItem("cartBooks", JSON.stringify(this.booksCart));
+
+    window.localStorage.setItem("total", JSON.stringify(this.total));
+
+    window.localStorage.setItem("booksCount", JSON.stringify(this.booksCount));
+
   }
 
   cartSubjectEmitter() {
 
-    this.booksCartSubject.next(this.booksCart.slice())
+    this.booksCartSubject.next(this.booksCart.slice());
 
   }
 
   totalSubjectEmitter() {
 
     this.totalSubject.next(this.getTotal())
-
   }
 
   booksCountEmitter() {
+
     this.booksCountSubject.next(this.getBooksCount())
+
   }
 
 }

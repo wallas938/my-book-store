@@ -19,15 +19,16 @@
               <span (click)="increaseQuantityHandler(book.id)"><i class="fas fa-sort-up"></i></span>
               <span> {{ book.numberOfBooks }} </span>
               <span (click)="dicreaseQuantityHandler(book.id)"><i class="fas fa-sort-down"></i></span>
-            </div> 
+            </div>
           </div>
           <div *ngIf="book.numberOfBooks < 10" id="price">
             <p> {{ book.changeablePrice }} {{ book.currencyCode }}</p>
-            <p class="remise">vous beneficier du remise de - 5%! Pour une remise de 10% achetez prenez 10 exemplaires</p>
+            <p class="remise">vous beneficier du remise de - 5%!<br>
+              Pour une remise de 10% achetez 10 exemplaires</p>
           </div>
           <div *ngIf="book.numberOfBooks === 10" id="price">
             <p> {{ book.changeablePrice }} {{ book.currencyCode }}</p>
-            <p class="remise">Vous avez maintenant droit a une remise de - 10%!!!!!!</p>
+            <p class="remise"><b>Vous avez maintenant droit a une remise de - 10%!!!!!!</b></p>
           </div>
         </div>
       </div>
@@ -36,5 +37,5 @@
       <p id="total"> TOTAL : {{ total }} €</p>
     </div>
   </main>
-  
+
 </div>

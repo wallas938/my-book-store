@@ -37,7 +37,7 @@ h2 {
 }
 
 #logo-delete {
-    
+
     padding-top: 40px;
     color: lightgrey;
     width: 5%;
@@ -48,7 +48,7 @@ h2 {
 }
 
 #title_author {
-    
+
     flex: 2;
     padding: 5% 0 0 2%;
 }
@@ -65,9 +65,10 @@ h2 {
 }
 
 .remise {
-    
+
     font-size: .9rem;
     color: red;
+    font-weight: 900;
 }
 
 
@@ -90,7 +91,7 @@ h2 {
 #total{
     border: 1px solid black;
     height: 60px;
-    width: 200px; 
+    width: 200px;
     text-align: center;
     font-weight: bold;
 }

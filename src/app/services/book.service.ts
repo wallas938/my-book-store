@@ -24,7 +24,7 @@ export class BookService {
     this.booksSubject.next(this.books.slice())
   }
 
-  queryHandler(query: String) {
+  queryHandler(query: string) {
 
     this.getBooksFromGoogleApi(query).subscribe(
       books => {
@@ -53,7 +53,8 @@ export class BookService {
           }
           return formatedBook
         })
-        console.log(this.books)
+        window.localStorage.setItem("books",  JSON.stringify(this.books));
+        window.localStorage.setItem("lastQuery",  query);
         this.booksSubjectEmitter()
         return this.books
       }
@@ -85,7 +86,7 @@ export class BookService {
             for(let j = 0; j < book.categories.length; j++) {
 
               if (book.categories[j].toLowerCase().trim().includes(categories[i].toLowerCase().trim())) {
-  
+
                 haveIt = true
 
               }

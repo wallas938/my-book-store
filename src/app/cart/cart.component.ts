@@ -28,40 +28,45 @@ export class CartComponent implements OnInit {
 
   constructor(private bookService: BookService,
     private cartService: CartService) {
-    this.booksCart = this.cartService.getBooksFromCart()
-    this.total = this.cartService.getTotal()
-    this.numberOfBooks.setValue(1)
   }
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
+    //Add 'implements OnInit' to the class
 
-    this.booksCartSubscription = this.cartService.booksCartSubject.subscribe(
+    //console.log(window.localStorage.getItem("cartBooks"))
 
-      (booksCart: any[]) => {
+    if (window.localStorage.getItem("cartBooks") && window.localStorage.getItem("total")) {
+      this.booksCart = JSON.parse(window.localStorage.getItem("cartBooks"));
+      this.total = JSON.parse(window.localStorage.getItem("total"));
+    } else {
+      this.booksCartSubscription = this.cartService.booksCartSubject.subscribe(
 
-        this.booksCart = booksCart
+        (booksCart: any[]) => {
 
-      }
+          this.booksCart = booksCart;
 
-    )
+        }
 
-    this.totalSubscription = this.cartService.totalSubject.subscribe(
+      )
 
-      (total: number) => {
+      this.totalSubscription = this.cartService.totalSubject.subscribe(
 
-        this.total = total
+        (total: number) => {
 
-      }
+          this.total = total
 
-    )
+        }
 
-    this.cartService.booksCountEmitter()
+      )
 
-    this.cartService.cartSubjectEmitter()
+      this.cartService.booksCountEmitter()
 
-    this.cartService.totalSubjectEmitter()
+      this.cartService.cartSubjectEmitter()
+
+      this.cartService.totalSubjectEmitter()
+
+    }
 
   }
 
