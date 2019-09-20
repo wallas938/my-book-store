@@ -23,19 +23,25 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    this.booksSubcription = this.bookService.booksSubject.subscribe(
+
+   /*  if(window.localStorage.getItem("books")) {
+      this.books = JSON.parse(window.localStorage.getItem("books"));
+    } */
+
+      this.booksSubcription = this.bookService.booksSubject.subscribe(
       (books: Ibook[]) => {
-        this.books = books;
+        this.books = books.length > 0 ? books : JSON.parse(window.localStorage.getItem("books"));
       }
     );
-
 
     this.bookService.booksSubjectEmitter();
 
     this.cartService.booksCountEmitter();
+
   }
 
   cartFiller(bookId: String) {
+
     let boughtBook: Ibook;
 
     this.books.forEach(element => {
@@ -46,9 +52,13 @@ export class MainComponent implements OnInit {
       }
 
       this.cartService.booksCountEmitter();
+
+      this.bookService.booksSubjectEmitter();
     });
 
     this.cartService.addToCart(boughtBook);
+
+    //window.localStorage.setItem("books", JSON.stringify(this.books));
 
     this.cartService.booksCountEmitter();
   }
@@ -61,6 +71,8 @@ export class MainComponent implements OnInit {
     });
 
     this.cartService.deleteBookFromMain(bookId);
+
+    //window.localStorage.setItem("books", JSON.stringify(this.books));
 
     this.cartService.booksCountEmitter();
   }

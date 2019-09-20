@@ -30,15 +30,13 @@ export class AppComponent {
 
   ngOnInit() {
 
-     if(window.localStorage.getItem("books")  && window.localStorage.getItem("lastQuery") &&   window.localStorage.getItem("booksCount")) {
+/*      if(window.localStorage.getItem("lastQuery") ||   window.localStorage.getItem("booksCount")) {
 
-      this.books = JSON.parse(window.localStorage.getItem('books'));
+      // this.books = JSON.parse(window.localStorage.getItem('books'));
 
       this.lastQuery = window.localStorage.getItem('lastQuery');
 
-      this.boughtBooksCount = +(window.localStorage.getItem('lastQuery'));
-
-      this.bookService.queryHandler(this.lastQuery);
+      this.boughtBooksCount = +(window.localStorage.getItem('booksCount'));
 
       this.userQuery.setValue('');
 
@@ -50,7 +48,14 @@ export class AppComponent {
         }
       )
       this.cartService.booksCountEmitter()
-    }
+    } */
+
+    this.boughtBooksCountSubscription = this.cartService.booksCountSubject.subscribe(
+      booksCount => {
+        this.boughtBooksCount = booksCount
+      }
+    )
+    this.cartService.booksCountEmitter()
 
   }
 

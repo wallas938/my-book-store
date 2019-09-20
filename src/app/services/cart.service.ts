@@ -10,15 +10,15 @@ export class CartService {
 
   books: Ibook[] = []
 
-  total: number
+  total: number  = JSON.parse(window.localStorage.getItem("total")) ? JSON.parse(window.localStorage.getItem("total")) : 0;
 
   totalSubject = new Subject()
 
-  booksCount: number
+  booksCount: number =  JSON.parse(window.localStorage.getItem("count")) ? JSON.parse(window.localStorage.getItem("count")) : 0;
 
   booksCountSubject = new Subject<number>()
 
-  booksCart: Ibook[] = []
+  booksCart: Ibook[] = JSON.parse(window.localStorage.getItem("booksCart")) ? JSON.parse(window.localStorage.getItem("booksCart")) : [];
 
   booksCartSubject = new Subject()
 
@@ -40,7 +40,9 @@ export class CartService {
 
     this.cartSubjectEmitter()
 
-    window.localStorage.setItem("cartBooks", JSON.stringify(this.booksCart));
+    //window.localStorage.setItem("cartBooks", JSON.stringify(this.booksCart));
+
+    console.log("addToCart")
   }
 
   deleteBookFromMain(bookId: String) {
@@ -53,7 +55,7 @@ export class CartService {
 
     this.cartSubjectEmitter()
 
-    window.localStorage.setItem("cartBooks", JSON.stringify(this.booksCart));
+    //window.localStorage.setItem("cartBooks", JSON.stringify(this.booksCart));
   }
 
   deleteBookFromCart(bookId: String) {
@@ -64,7 +66,9 @@ export class CartService {
 
     this.cartSubjectEmitter()
 
-    window.localStorage.setItem("cartBooks", JSON.stringify(this.booksCart));
+    this.booksCountEmitter()
+
+    //window.localStorage.setItem("cartBooks", JSON.stringify(this.booksCart));
   }
 
   getTotal(): number {
@@ -75,7 +79,7 @@ export class CartService {
       this.total += this.booksCart[i].changeablePrice
 
     }
-    window.localStorage.setItem("total", JSON.stringify(this.total));
+    //window.localStorage.setItem("total", JSON.stringify(this.total));
 
     return Number(this.total.toFixed(2))
   }
@@ -120,13 +124,11 @@ export class CartService {
 
     this.totalSubjectEmitter()
 
-    this.booksCountEmitter()
-
-    window.localStorage.setItem("cartBooks", JSON.stringify(this.booksCart));
+/* window.localStorage.setItem("cartBooks", JSON.stringify(this.booksCart));
 
     window.localStorage.setItem("total", JSON.stringify(this.total));
 
-    window.localStorage.setItem("booksCount", JSON.stringify(this.booksCount));
+    window.localStorage.setItem("booksCount", JSON.stringify(this.booksCount)); */
   }
 
   dicreaseQuantity(bookId: String): void {
@@ -143,35 +145,34 @@ export class CartService {
         return book
       }
     )
-    this.cartSubjectEmitter()
+    this.cartSubjectEmitter();
 
-    this.totalSubjectEmitter()
+    this.totalSubjectEmitter();
 
-    this.booksCountEmitter()
-
-    window.localStorage.setItem("cartBooks", JSON.stringify(this.booksCart));
+/* window.localStorage.setItem("cartBooks", JSON.stringify(this.booksCart));
 
     window.localStorage.setItem("total", JSON.stringify(this.total));
 
-    window.localStorage.setItem("booksCount", JSON.stringify(this.booksCount));
+    window.localStorage.setItem("booksCount", JSON.stringify(this.booksCount)); */
 
   }
 
   cartSubjectEmitter() {
 
     this.booksCartSubject.next(this.booksCart.slice());
+    window.localStorage.setItem("booksCart", JSON.stringify(this.booksCart));
 
   }
 
   totalSubjectEmitter() {
 
-    this.totalSubject.next(this.getTotal())
+    this.totalSubject.next(this.getTotal());
+    window.localStorage.setItem("total", JSON.stringify(this.total));
   }
 
   booksCountEmitter() {
-
-    this.booksCountSubject.next(this.getBooksCount())
-
+    this.booksCountSubject.next(this.getBooksCount());
+    window.localStorage.setItem("count", JSON.stringify(this.booksCount));
   }
 
 }

@@ -36,7 +36,7 @@ export class CartComponent implements OnInit {
 
     //console.log(window.localStorage.getItem("cartBooks"))
 
-    if (window.localStorage.getItem("cartBooks") && window.localStorage.getItem("total")) {
+    /* if (window.localStorage.getItem("cartBooks") && window.localStorage.getItem("total")) {
       this.booksCart = JSON.parse(window.localStorage.getItem("cartBooks"));
       this.total = JSON.parse(window.localStorage.getItem("total"));
     } else {
@@ -66,7 +66,32 @@ export class CartComponent implements OnInit {
 
       this.cartService.totalSubjectEmitter()
 
-    }
+    } */
+    this.booksCartSubscription = this.cartService.booksCartSubject.subscribe(
+
+      (booksCart: any[]) => {
+
+        this.booksCart = booksCart;
+
+      }
+
+    )
+
+    this.totalSubscription = this.cartService.totalSubject.subscribe(
+
+      (total: number) => {
+
+        this.total = total
+
+      }
+
+    )
+
+    this.cartService.booksCountEmitter()
+
+    this.cartService.cartSubjectEmitter()
+
+    this.cartService.totalSubjectEmitter()
 
   }
 

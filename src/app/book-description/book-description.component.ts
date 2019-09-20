@@ -41,13 +41,14 @@ export class BookDescriptionComponent implements OnInit {
 
         boughtBook = element
       }
-
-      this.cartService.booksCountEmitter()
     });
 
     this.cartService.addToCart(boughtBook)
 
     this.cartService.booksCountEmitter()
+
+    this.bookService.booksSubjectEmitter()
+
   }
 
   retrieveHandler(bookId: String) {

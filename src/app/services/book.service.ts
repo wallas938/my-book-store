@@ -9,9 +9,7 @@ import { FilterService } from '../services/filter.service';
 })
 export class BookService {
 
-  private books: Ibook[] = [
-
-  ]
+  private books: Ibook[] = JSON.parse(window.localStorage.getItem("books")) ? JSON.parse(window.localStorage.getItem("books")) : [];
 
   lastQuery: String
 
@@ -22,6 +20,7 @@ export class BookService {
   booksSubjectEmitter() {
 
     this.booksSubject.next(this.books.slice())
+    window.localStorage.setItem("books",  JSON.stringify(this.books));
   }
 
   queryHandler(query: string) {
@@ -53,9 +52,9 @@ export class BookService {
           }
           return formatedBook
         })
-        window.localStorage.setItem("books",  JSON.stringify(this.books));
+        this.booksSubjectEmitter();
+        console.log("1er enregistrement de books dans le local storage dans la fonction : getBooksFromGoogleApi du book.service");
         window.localStorage.setItem("lastQuery",  query);
-        this.booksSubjectEmitter()
         return this.books
       }
     )
@@ -69,11 +68,16 @@ export class BookService {
     this.books.forEach(
       book => {
 
-        if (book.id === bookId)
+        if (book.id === bookId) {
           book.isInCart = false
+          console.log(book.isInCart)
+        }
+
       }
     )
     this.booksSubjectEmitter()
+
+    console.log("2eme enregistrement de books dans le local storage dans la fonction : updateMainBooks du book.service");
   }
 
   applyFilter(categories: any[], rates: any[]) {
@@ -109,5 +113,8 @@ export class BookService {
 
       })
     this.booksSubjectEmitter()
+
+    //window.localStorage.setItem("books",  JSON.stringify(this.books));
+    console.log("3eme enregistrement de books dans le local storage dans la fonction : applyFilter du book.service");
   }
 }
